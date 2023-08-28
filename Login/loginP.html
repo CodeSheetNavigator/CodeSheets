@@ -4,38 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="loginpage.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <title>Document</title>
 </head>
 <body>
-    <div class="login-box">
-    <h2>Login</h2>
-    <form>
-      <div class="user-box">
-        <input type="text" name="" required="">
-        <label>Username</label>
-      </div>
-      <div class="user-box">
-        <input type="password" name="" required="">
-        <label>Password</label>
-      </div>
-      <a href="#">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        Submit
-      </a>
-    </form>
-    <!-- Login with Google Button -->
-    <button id="login-google">Login with Google</button>
-    <!-- Login with GitHub Button -->
-    <button id="login-github"><img src="/github-mark.png"/>  Login with GitHub</button>
+   
+<div class="container" id="container">
+  <div class="form-container sign-up-container">
+      <form action="#">
+          <h1>Create Account</h1>
+          <div class="social-container">
+              <a href="#" class="social" ><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="social" ><i class="fab fa-google-plus-g"></i></a>
+              <a href="#" class="social" ><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" class="social" ><i class="fab fa-github"></i></a>
+          </div>
+          <span>or use your email for registration</span>
+          <input type="text" placeholder="Name" />
+          <input type="email" placeholder="Email" />
+          <input type="password" placeholder="Password" />
+          <button>Sign Up</button>
+      </form>
   </div>
+  <div class="form-container sign-in-container">
+      <form action="#">
+          <h1>Sign in</h1>
+          <div class="social-container">
+              <a href="#" class="social" id = "login-github"><i class="fab fa-github"></i></a>
+              <a href="#" class="social" id = "login-google"><i class="fab fa-google-plus-g"></i></a>
+              <a href="#" class="social" id = "login-linkedin"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" class="social" ><i class="fab fa-facebook-f"></i></a>
+          </div>
+          <span>or use your account</span>
+          <input type="email" placeholder="Email" />
+          <input type="password" placeholder="Password" />
+          <a href="#">Forgot your password?</a>
+          <button>Sign In</button>
+      </form>
+  </div>
+  <div class="overlay-container">
+      <div class="overlay">
+          <div class="overlay-panel overlay-left">
+              <h1>Welcome Back!</h1>
+              <p>To keep connected with us please login with your personal info</p>
+              <button class="ghost" id="signIn">Sign In</button>
+          </div>
+          <div class="overlay-panel overlay-right">
+              <h1>Hello, Friend!</h1>
+              <p>Enter your personal details and start journey with us</p>
+              <button class="ghost" id="signUp">Sign Up</button>
+          </div>
+      </div>
+  </div>
+</div>
+
 </body>
+<script src = "login.js">
+
+</script>
 <script type="module">
   // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.3.0/firebase-app.js";
-  
+  import {auth, provider, provider1} from "../firebase.js";
+  import {signInWithPopup} from "https://www.gstatic.com/firebasejs/10.3.0/firebase-auth.js";
+
   // Add event listener for Google login button
   document.getElementById("login-google").addEventListener("click", (e) => {
     
@@ -62,6 +93,32 @@
     console.log(error);
   });
   
+});
+
+
+  document.getElementById("login-github").addEventListener("click", (e) => {
+
+   signInWithPopup(auth, provider1)
+ .then((result) => {
+    // This gives you a GitHub Access Token. You can use it to access the GitHub API.
+    const credential = provider1.credentialFromResult(result);
+    const token = credential.accessToken;
+
+    // The signed-in user info.
+    const user = result.user;
+    // IdP data available using getAdditionalUserInfo(result)
+    // ...
+  }).catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // The email of the user's account used.
+    const email = error.customData.email;
+    // The AuthCredential type that was used.
+    const credential = provider1.credentialFromError(error);
+    // ...
+  });
+    
 });
 </script>
 </html>
