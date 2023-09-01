@@ -14,6 +14,7 @@ body {
     height: 100vh;
     margin: -20px 0 50px;
 		margin-top: 20px;
+    overflow: hidden;
 }
 
 h1 {
@@ -43,7 +44,7 @@ a {
 .container {
     background: #fff;
     border-radius: 10px;
-    box-shadow: 0 14px 28px rgba(0, 0, 0, .2), 0 10px 10px rgba(0, 0, 0, .2);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, .2), 0 10px 10px rgba(0, 0, 0, 0.301);
     position: relative;
     overflow: hidden;
     width: 768px;
@@ -222,4 +223,14 @@ button.ghost {
 	height: 30px;
 	letter-spacing: 15px;
 	align-items: center;
+}
+
+#background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1; /* Place the video behind other elements */
 }
