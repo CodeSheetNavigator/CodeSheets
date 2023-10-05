@@ -1,5 +1,5 @@
 
-# EatCode - Your Coding Sheet Tracker
+# CodeSheets - Your Coding Sheet Tracker
 
 Welcome to EatCode, your go-to tool for keeping track of your progress in solving Data Structures and Algorithms (DSA) questions from popular coding sheets. This project aims to make your coding journey smoother by providing you with a centralized platform to manage your practice questions effectively.
 
