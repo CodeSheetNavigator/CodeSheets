@@ -79,7 +79,7 @@ body {
 .collapsible input:checked ~ .collapsible-text {
 	max-height: 300px;
 	padding-bottom: 25px;
-	background: #ffffff;
+	background: #d86969;
 	box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.1),
 		0 4px 11px 0 rgba(0, 0, 0, 0.08);
 	opacity: 1;
